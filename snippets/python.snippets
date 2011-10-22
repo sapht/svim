@@ -1,0 +1,35 @@
+snippet mysqlconn
+	try:
+		dbh = MySQLdb.connect(
+			host = '${1}',
+			user = '${2}',
+			passwd = '${3}',
+			db = '${4}');
+	except MySQLdb.Error, e:
+		sys.exit(1)
+
+snippet cur
+	query = dbh.cursor(MySQLdb.cursors.DictCursor)
+
+snippet exe
+	${2:query}.execute('${1}')
+
+snippet view
+	def ${1:view}(request${2:, **kwargs}):
+		${3:if not request.user.is_authenticated(): return HttpResponseRedirect(reverse('default'))}
+		${4: # code}
+
+snippet rtr
+	return render_to_response('${1}', {
+		${2: # args }
+	}${3: , context_instance=RequestContext(request)})
+
+snippet redir
+	return HttpResponseRedirect(reverse('${1:default}'${2}))${3}
+
+snippet pdb
+	${1:import pdb; }pdb.set_trace()
+	${2}
+
+snippet testae
+	self.assertEqual($1, $2)

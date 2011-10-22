@@ -1,0 +1,23 @@
+# DBI Connect
+snippet dbi
+	my $dbh = DBI->connect('DBI:mysql:database=${1:db};host=${2:host};user=${3:user};password=${4:password}');
+# DBI prepare
+snippet dbp
+	my $${1:query} = $${2:dbh}->prepare('${3}');
+# DBI execute
+snippet dbe
+	$${1:query}->execute(${2});
+# DBI fetchrow_hashref
+snippet fhash
+	$${1:query}->fetchrow_hashref();
+# DBI while row = fetchrow_hashref
+snippet lhash
+	while (my $${1:row} = $${2:query}->fetchrow_hashref()) {
+		${3}
+	}
+
+snippet shopt
+	my %shopt=();
+	use Getopt::Std;
+	getopts("{$1}", \%shopt);
+	# For instance vh:q (h takes an argument, other parameters take no arguments: $0 -vq -q "hello"

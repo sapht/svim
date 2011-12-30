@@ -10,7 +10,15 @@ map <F4> <plug>NERDCommenterToggle
 map <F5> :NERDTreeToggle<CR>
 map <F6> :set wrap!<CR>
 map <F7> :sh<CR>
+map <F8> :BufExplorer<CR>
+map <F9> :e %:h<CR>
 map <F12> :q!<CR>
+
+" Window movement
+map <M-h> <C-w><C-h>
+map <M-j> <C-w><C-j>
+map <M-k> <C-w><C-k>
+map <M-l> <C-w><C-l>
 
 function! Smart_TabComplete()
   let line = getline('.')                         " curline

@@ -50,6 +50,17 @@ let g:miniBufExplModSelTarget = 1
 let g:miniBufExplVSplit = 0
 " }}}
 
+" Bufexplorer
+let g:bufExplorerDefaultHelp=1
+let g:bufExplorerFindActive=0
+let g:bufExplorerShowDirectories=0
+let g:bufExplorerShowRelativePath=1
+let g:bufExplorerSortBy='name'
+let g:bufExplorerSplitOutPathName=0
+
+
+
+
 " smarty
 au BufRead,BufNewFile *.tpl set filetype=smarty
 

@@ -46,3 +46,6 @@
 [submodule "bundle/bufkill"]
 	path = bundle/bufkill
 	url = https://github.com/vim-scripts/bufkill.vim
+[submodule "bundle/applescript"]
+	path = bundle/applescript
+	url = https://github.com/vim-scripts/applescript.vim.git

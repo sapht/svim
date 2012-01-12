@@ -79,8 +79,9 @@ if has('gui_running')
 	set mouse=a
 	if has('gui_macvim')
 		set macmeta
-		set guifont=Menlo:h13
-		set background=light
+		set guifont=FixedSysTTF:h15
+        set noantialias
+		set background=dark
 		colors solarized
 	else
 		set guifont=Terminus\ 8
@@ -95,7 +96,7 @@ else
 		"set t_ve+=[?81;0;112c
 	endif
 
-	color default
+	color zenburn
 " set t_Co=16
 	" color zenburn
 endif

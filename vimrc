@@ -2,6 +2,7 @@
 version 7.2
 if &cp | set nocp | endif
 let s:cpo_save=&cpo
+set runtimepath+=/Applications/LilyPond.app/Contents/Resources/share/lilypond/current/vim
 call pathogen#infect()
 set nocompatible
 set cpo&vim

@@ -1,7 +1,25 @@
+map <C-\>s :source ~/.vimrc<CR>
+map <C-\>jt :JSLintToggle<CR>
+map <C-\>ju :JSLintUpdate<CR>
+
+map <leader>] :cn<CR>
+map <leader>[ :cp<CR>
+map <leader>= :cc<CR>
+map <C-\>o :copen<CR>
+map <C-\>c :cclose<CR>
+
+
+
+"nunmap <Left> 
+"nunmap <Right>
+nmap <Down> jzz
+nmap <Up> kzz
+nmap <Home> gg
+nmap <End> G
+
 map <C-\><C-\> :SessionSave<CR>
 map <C-\>o :SessionList<CR>
 map <C-\>c :SessionClose<CR>
-map <C-\>s :source ~/.vimrc<CR>
 
 map <F1> :!./%<CR>
 map <F2> :wall<CR>
@@ -11,14 +29,24 @@ map <F5> :NERDTreeToggle<CR>
 map <F6> :set wrap!<CR>
 map <F7> :sh<CR>
 map <F8> :BufExplorer<CR>
-map <F9> :e %:h<CR>
+map <leader><F9> :cclose<CR>
+map <F9> :copen<CR>
+map <F10> :cp<CR>
+map <F11> :cn<CR>
 map <F12> :q!<CR>
+
+map <M-i> >>
+map <M-o> <<
 
 " Window movement
 map <M-h> <C-w><C-h>
 map <M-j> <C-w><C-j>
 map <M-k> <C-w><C-k>
 map <M-l> <C-w><C-l>
+map <Esc>h <C-w><C-h>
+map <Esc>j <C-w><C-j>
+map <Esc>k <C-w><C-k>
+map <Esc>l <C-w><C-l>
 
 function! Smart_TabComplete()
   let line = getline('.')                         " curline
@@ -52,12 +80,6 @@ function! ReloadSnippets( snippets_dir, ft )
 endfunction
 
 nmap <Leader>rr :call ReloadSnippets(snippets_dir, &filetype)<CR>
-
-
-map \<Right> <C-w><C-l>
-map \<Left> <C-w><C-h>
-map \<Up> <C-w><C-k>
-map \<Down> <C-w><C-j>
 
 map <Leader>n :bn<CR>
 map <Leader>p :bp<CR>
@@ -189,9 +211,6 @@ map <Leader>r :!./"l"<CR>
 " Make Y consistent with D
 map Y y$
 
-" Span virtual lines
-map \c <C-w>c
-
 " Close window
 map j gj
 map k gk
@@ -212,11 +231,6 @@ map <S-Down> <C-w><C-j>
 map <S-Up> <C-w><C-k>
 map <S-Right> <C-w><C-l>
 
-nmap <Left> vaBo<Esc><Esc>
-nmap <Down> jzz:set cursorline<CR>
-nmap <Up> kzz:set cursorline<CR>
-nmap <Right> vaB<Esc><Esc>
-
 "imap <Left> <C-o>zh
 "imap <Down> <C-o><C-e>
 "imap <Up> <C-o><C-y>
@@ -236,18 +250,6 @@ noremap <Leader>g `
 
 noremap <C-?> zxzz
 noremap <C-h> zxzz
-
-" This doesn't work yet
-function! StaunchSearch ()
-	set hlsearch
-	let old_reg = getreg('"')
-	let old_reg_type = getregtype('"')
-	normal yiw
-	" TODO: above line is pretty ugly, shouldn't need normal mode
-	let @/ = getreg('"')
-	call setreg ('"', old_reg, old_reg_type)
-endfunction
-command! -nargs=0 StaunchSearch call StaunchSearch()
 
 " Function-oriented leader mappings
 map <leader>2 :set number!<CR>

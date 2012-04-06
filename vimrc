@@ -25,7 +25,7 @@ set helplang=en
 set grepprg=ack\ $*
 
 set hidden
-set backupdir=~/.vimswap// directory=~/.vimswap//
+set backupdir=~/tmp/vimswap/ directory=~/tmp/vimswap/
 set nowritebackup
 
 set tabstop=4 softtabstop=4 shiftwidth=4
@@ -66,16 +66,14 @@ syntax on
 "au WinEnter * set cursorline cursorcolumn
 "au WinLeave * set nocursorline nocursorcolumn
 au BufEnter * normal zR
+au InsertLeave * set nopaste
 "au BufEnter * set cursorline cursorcolumn
 "au BufLeave * set nocursorline nocursorcolumn
 
 " source ~/.vim/High.vim
 
-" gvim {{{
 if has('gui_running')
-	set go=
-	" Guicursor
-	"set gcr=a:blinkon0
+	set guicursor=
 
 	set mouse=a
 	if has('gui_macvim')
@@ -88,34 +86,15 @@ if has('gui_running')
 		set guifont=Terminus\ 8
 		color bithack
 	endif
-
-	" color zenburn
-" }}}
-" terminal vim {{{
 else
-	if &term == "linux"
-		"set t_ve+=[?81;0;112c
-	endif
-
-	color zenburn
-" set t_Co=16
-	" color zenburn
+	color primal
 endif
-" }}}
 
-" colors appendix
-au InsertLeave * set nopaste
 
-" colors ~/.vim/colors/minipink.vim
 source ~/.vim/keys.vimrc
-" Key bindings
 source ~/.vim/plugins.vimrc
-" Settings for plugins
 source ~/.vim/labels.vimrc
-" Settings for labels
 
-normal zR
 set notimeout
 set novisualbell
-
 set modeline

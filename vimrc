@@ -74,6 +74,8 @@ au InsertLeave * set nopaste
 
 if has('gui_running')
 	set guicursor=
+    set guioptions-=m
+    set guioptions-=T
 
 	set mouse=a
 	if has('gui_macvim')
@@ -83,8 +85,9 @@ if has('gui_running')
 		set background=dark
 		colors solarized
 	else
-		set guifont=Terminus\ 8
-		color bithack
+		"color bithack
+        color primal
+		set guifont=Fixed\ 8
 	endif
 else
 	color primal

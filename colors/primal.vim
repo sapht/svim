@@ -44,5 +44,5 @@ hi Underlined     cterm=underline   ctermfg=NONE
 hi Ignore         cterm=none        ctermfg=NONE
 hi Error          cterm=none     ctermfg=NONE ctermbg=NONE
 hi Todo           cterm=none    ctermfg=7 ctermbg=1
-hi Normal					ctermfg=7
+hi Normal					ctermfg=7 ctermbg=NONE guibg=#000000 guifg=NONE
 hi MatchParen     cterm=none ctermbg=none ctermfg=6

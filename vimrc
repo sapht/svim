@@ -11,7 +11,7 @@ set ignorecase
 set incsearch
 
 set foldmethod=indent
-set backspace=indent,eol,start
+set backspace=
 set mouse=
 
 set laststatus=2
@@ -72,50 +72,36 @@ au BufEnter * normal zR
 " source ~/.vim/High.vim
 
 " gvim {{{
-if has('gui_running')
-	set go=
-	" Guicursor
-	"set gcr=a:blinkon0
 
-	set mouse=a
-	if has('gui_macvim')
-		set macmeta
-		set guifont=FixedSysTTF:h15
-        set noantialias
-		set background=dark
-		colors solarized
-	else
-		set guifont=Terminus\ 8
-		color bithack
-	endif
-
-	" color zenburn
-" }}}
-" terminal vim {{{
-else
-	if &term == "linux"
-		"set t_ve+=[?81;0;112c
-	endif
-
-	color zenburn
-" set t_Co=16
-	" color zenburn
-endif
-" }}}
-
-" colors appendix
-au InsertLeave * set nopaste
-
-" colors ~/.vim/colors/minipink.vim
-source ~/.vim/keys.vimrc
-" Key bindings
-source ~/.vim/plugins.vimrc
-" Settings for plugins
-source ~/.vim/labels.vimrc
-" Settings for labels
-
-normal zR
 set notimeout
 set novisualbell
 
 set modeline
+if bufname("%") =~ "qmv[^/]*$" || bufname("%") =~ "\.txt$" 
+	set ts=8
+    set sw=8
+    set noexpandtab
+else
+    match Error /\%>80v.\+/
+    if has('gui_running')
+        set go=
+        set mouse=a
+        if has('gui_macvim')
+            set macmeta
+            set guifont=FixedSysTTF:h15
+            set noantialias
+            set background=dark
+            colors solarized
+        else
+            set guifont=Terminus\ 8
+            color bithack
+        endif
+    else
+        color zenburn
+    endif
+endif
+
+au InsertLeave * set nopaste
+source ~/.vim/keys.vimrc
+source ~/.vim/plugins.vimrc
+source ~/.vim/labels.vimrc

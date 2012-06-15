@@ -9,6 +9,15 @@ map <C-\>o :copen<CR>
 map <C-\>c :cclose<CR>
 
 
+" j is the insert mode prefix key
+imap jj <Esc>
+imap jl <C-o>^X<C-o>>><C-o>s
+imap jh <C-o>^X<C-o><<<C-o>s
+
+" stuff i never use that just bugs me
+map H h
+map L l
+map K k
 
 "nunmap <Left> 
 "nunmap <Right>
@@ -116,9 +125,6 @@ vmap <S-space> <plug>NERDCommenterToggle
 if !hasmapto('<plug>NERDCommenterAltDelims', 'n')
 		nmap <Leader>ca <plug>NERDCommenterAltDelims
 endif
-
-" Escaping to normal mode
-imap jj <Esc>
 
 " Write, goddammit
 command! WriteFFS set noro | w! !sudo tee % > /dev/null
@@ -316,3 +322,4 @@ map <Leader>co2 :colorscheme burzum<CR>:colorscheme appendix<CR>
 map <Leader>co3 :colorscheme macvim<CR>:colorscheme appendix<CR>
 map <Leader>co4 :colorscheme inkpot<CR>:colorscheme appendix<CR>
 map <Leader>co5 :colorscheme asu1dark<CR>:colorscheme appendix<CR>
+map <F1> :make<CR>

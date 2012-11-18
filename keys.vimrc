@@ -1,14 +1,12 @@
 map <leader>/i :set ignorecase!<CR>:set ignorecase?<CR>
 map <leader>/h :set hlsearch!<CR>:set hlsearch?<CR>
-map <leader>= :cc<CR>
-map <leader>co :copen<CR>
-map <leader>cc :cclose<CR>
-map <leader>] :cn<CR>
-map <leader>[ :cp<CR>
 
-map <leader>j mAo<Esc>`A
-map <leader>k mAO<Esc>`A
-map <leader>l :set cursorline!<CR>:set cursorline?<CR>
+nmap <leader>h mAkJ`A
+nmap <leader>j mAo<Esc>`A
+nmap <leader>k mAO<Esc>`A
+nmap <leader>l :set cursorline!<CR>:set cursorline?<CR>
+
+imap <C-c> <Esc>
 
 map <Space> <nop>
 map <Enter> <nop>
@@ -47,16 +45,38 @@ map <F12> :q!<CR>
 
 map <M-i> >>
 map <M-o> <<
+nmap <leader>] :cn<CR>
+nmap <leader>[ :cp<CR>
+nmap <leader>= :cc<CR>
+nmap <leader>rr :call ReloadSnippets(snippets_dir, &filetype)<CR>
+nmap <leader>clo :copen<CR>
+nmap <leader>clc :cclose<CR>
 
-" Window movement
-map <M-h> <C-w><C-h>
-map <M-j> <C-w><C-j>
-map <M-k> <C-w><C-k>
-map <M-l> <C-w><C-l>
-map <Esc>h <C-w><C-h>
-map <Esc>j <C-w><C-j>
-map <Esc>k <C-w><C-k>
-map <Esc>l <C-w><C-l>
+"nunmap <Left> 
+"nunmap <Right>
+nmap <Home> gg
+nmap <End> G
+
+nmap <F1> :make<CR>
+nmap <F2> :wall<CR>
+nmap <F3> :set hlsearch!<CR>
+nmap <F4> <plug>NERDCommenterToggle
+nmap <F5> :NERDTreeToggle<CR>
+nmap <F6> :set number!<CR>
+nmap <F7> :cp<CR>
+nmap <F8> :cn<CR>
+nmap <F12> :q!<CR>
+
+nmap <M-i> >>
+nmap <M-o> <<
+nmap <M-h> <C-w><C-h>
+nmap <M-j> <C-w><C-j>
+nmap <M-k> <C-w><C-k>
+nmap <M-l> <C-w><C-l>
+nmap <Esc>h <C-w><C-h>
+nmap <Esc>j <C-w><C-j>
+nmap <Esc>k <C-w><C-k>
+nmap <Esc>l <C-w><C-l>
 
 function! Smart_TabComplete()
   let line = getline('.')                         " curline
@@ -88,14 +108,6 @@ function! ReloadSnippets( snippets_dir, ft )
     call ResetSnippets()
     call GetSnippets( a:snippets_dir, filetype )
 endfunction
-
-nmap <Leader>rr :call ReloadSnippets(snippets_dir, &filetype)<CR>
-
-map <Leader>n :bn<CR>
-map <Leader>p :bp<CR>
-
-noremap <C-w>v <C-w>vzz
-noremap <C-w>s <C-w>szz
 
 " this drives me crazy, why won't escape ever work right
 " inoremap <Esc> <C-c>
@@ -171,16 +183,6 @@ command! Apa call Apa()
 
 nmap \: :Apa<CR>
 
-" (disabled) Terminal Meta-key fix  (Messes up escape...)
-" fix meta-keys which generate <Esc>a .. <Esc>z
-" http://vim.wikia.com/wiki/Fix_meta-keys_that_break_out_of_Insert_mode
-" let c='a'
-" while c <= 'z'
-"   exec "set <M-".(c).">=\e".c
-"   exec "imap \e".c." <M-".(c).">"
-"   let c = nr2char(1+char2nr(c))
-" endw
-
 " MapToggle utility
 function! MapToggle(key, opt) " 
   let cmd = ':set '.a:opt.'! \| set '.a:opt."?\<CR>"
@@ -198,21 +200,9 @@ function! BufferRunCommand()
 endfunction
 command! BufferRunCommand call BufferRunCommand()
 
-
-" Browse parent directory of current file
-" TODO: make this aware of empty buffers
-map <Leader>b :e %:h<CR>
-"inoremap <Leader>p <C-p>
-"inoremap <Leader>n <C-n>
-map <leader>e :e 
-
 " Write file and compile -- whatever that means (upload, gcc, rubber etc)
-map <Leader>w :w<CR>
-noremap <leader><Space> :w<CR>
-noremap <leader>q :q<CR>
-noremap <leader>w :w<CR>
-"map \r :BufferRunCommand<CR>
-map <Leader>r :!./"l"<CR>
+nmap <Leader>w :w<CR>
+nmap <Leader>r :!./"l"<CR>
 
 " Make Y consistent with D
 map Y y$
@@ -242,16 +232,17 @@ map <S-Right> <C-w><C-l>
 "imap <Up> <C-o><C-y>
 "imap <Right> <C-o>zl
 
-imap <C-c> <Esc>
-
-map <S-space> <Leader>c<Space>
 " map L 4l
 " map H 4h
 
-noremap <Leader>g `
-
-noremap <C-?> zxzz
-noremap <C-h> zxzz
+nnoremap <Leader>g `
+"nunmap <C-?>
+"nunmap <C-h>
+"nunmap <space>
+"nunmap <enter>
+nmap L l
+nmap H h
+nmap K k
 
 " Function-oriented leader mappings
 map <leader>2 :set number!<CR>
@@ -266,25 +257,20 @@ map <leader>9 :tabNext<CR>
 map <leader>0 :tabnext<CR>
 
 " Remap visual * and #: Search for selected text, forwards or backwards.
-vnoremap <silent> * :<C-U>
-  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
-  \gvy/<C-R><C-R>=substitute(
-  \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
-  \gV:call setreg('"', old_reg, old_regtype)<CR>
-vnoremap <silent> # :<C-U>
-  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
-  \gvy?<C-R><C-R>=substitute(
-  \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
-  \gV:call setreg('"', old_reg, old_regtype)<CR>
+"vnoremap <silent> * :<C-U>
+  "\let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+  "\gvy/<C-R><C-R>=substitute(
+  "\escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+  "\gV:call setreg('"', old_reg, old_regtype)<CR>
+"vnoremap <silent> # :<C-U>
+  "\let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+  "\gvy?<C-R><C-R>=substitute(
+  "\escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+  "\gV:call setreg('"', old_reg, old_regtype)<CR>
 
 " Make visual mode more reasonable
 vmap J j
 vmap K k
-
-vnoremap <Down> zzj
-vnoremap <Up> zzk
-vnoremap <Left> zzh
-vnoremap <Right> zzl
 
 " I HATE DEFAULT COMMAND MODE KEYBINDINGS
 cnoremap <C-a> <Home>

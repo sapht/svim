@@ -4,9 +4,6 @@
 [submodule "bundle/bufexplorer"]
 	path = bundle/bufexplorer
 	url = git@github.com:slack/vim-bufexplorer.git
-[submodule "bundle/csapprox"]
-	path = bundle/csapprox
-	url = git://github.com/godlygeek/csapprox.git
 [submodule "bundle/zencoding"]
 	path = bundle/zencoding
 	url = git://github.com/mattn/zencoding-vim.git
@@ -49,6 +46,6 @@
 [submodule "bundle/applescript"]
 	path = bundle/applescript
 	url = https://github.com/vim-scripts/applescript.vim.git
-[submodule "bundle/jslint"]
-	path = bundle/jslint
-	url = git://github.com/hallettj/jslint.vim.git
+[submodule "bundle/solarized"]
+	path = bundle/solarized
+	url = git@github.com:altercation/vim-colors-solarized.git

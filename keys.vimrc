@@ -1,13 +1,18 @@
-map <C-\>s :source ~/.vimrc<CR>
-map <C-\>jt :JSLintToggle<CR>
-map <C-\>ju :JSLintUpdate<CR>
-
+map <leader>/i :set ignorecase!<CR>:set ignorecase?<CR>
+map <leader>/h :set hlsearch!<CR>:set hlsearch?<CR>
+map <leader>= :cc<CR>
+map <leader>co :copen<CR>
+map <leader>cc :cclose<CR>
 map <leader>] :cn<CR>
 map <leader>[ :cp<CR>
-map <leader>= :cc<CR>
-map <C-\>o :copen<CR>
-map <C-\>c :cclose<CR>
 
+map <leader>j mAo<Esc>`A
+map <leader>k mAO<Esc>`A
+map <leader>l :set cursorline!<CR>:set cursorline?<CR>
+
+map <Space> <nop>
+map <Enter> <nop>
+map <Backspace> <nop>
 
 " j is the insert mode prefix key
 imap jj <Esc>
@@ -15,20 +20,16 @@ imap jl <C-o>^X<C-o>>><C-o>s
 imap jh <C-o>^X<C-o><<<C-o>s
 
 " stuff i never use that just bugs me
-map H h
-map L l
-map K k
+map H <nop>
+map L <nop>
+map K <nop>
 
 "nunmap <Left> 
 "nunmap <Right>
-nmap <Down> jzz
-nmap <Up> kzz
+nmap <Down> +
+nmap <Up> -
 nmap <Home> gg
 nmap <End> G
-
-map <C-\><C-\> :SessionSave<CR>
-map <C-\>o :SessionList<CR>
-map <C-\>c :SessionClose<CR>
 
 map <F1> :!./%<CR>
 map <F2> :wall<CR>
@@ -118,7 +119,6 @@ map <Leader>cu <plug>NERDCommenterUncomment
 map <Leader>c$ <plug>NERDCommenterToEOL
 map <Leader>cA <plug>NERDCommenterAppend
 
-map <space><space> :BufExplorer<CR>
 map <S-space> <plug>NERDCommenterToggle
 vmap <S-space> <plug>NERDCommenterToggle
 
@@ -242,10 +242,6 @@ map <S-Right> <C-w><C-l>
 "imap <Up> <C-o><C-y>
 "imap <Right> <C-o>zl
 
-map <Leader>h mAkJ`A
-map <Leader>j mAo<Esc>`A
-map <Leader>k mAO<Esc>`A
-map <Leader>l mAJ`A
 imap <C-c> <Esc>
 
 map <S-space> <Leader>c<Space>

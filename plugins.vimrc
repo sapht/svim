@@ -2,6 +2,8 @@
 "let loaded_matchit = 1
 "let loaded_showmarks = 1
 
+let NERDTreeIgnore = ['\.pyc$', '\.log$']
+
 let g:JSLintHighlightErrorLine = 0
 let g:CSApprox_verbose_level = 0
 let g:no_html_tab_mapping = 1

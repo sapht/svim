@@ -88,10 +88,12 @@ else
         set mouse=a
         if has('gui_macvim')
             set macmeta
-            set guifont=FixedSysTTF:h15
-            set noantialias
-            set background=dark
-            colors solarized
+            set guifont=Menlo:h12
+            set antialias
+            set background=light
+            " set columns=84
+            " set lines=130
+            color burzum
         else
             set guifont=Terminus\ 8
             color bithack
